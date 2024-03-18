@@ -31,7 +31,7 @@ document
   .getElementById("downloadButton")
   .addEventListener("click", function () {
     // Redireciona para a rota do Flask que gera o arquivo Excel
-    window.location.href = "/download_excel";
+    window.location.href = "/estadonutricional/download_excel";
   });
 
 function enviarArquivo() {
