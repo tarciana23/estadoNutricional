@@ -39,7 +39,7 @@ function enviarArquivo() {
   let fileInput = document.getElementById("file");
   formData.append("file", fileInput.files[0]);
 
-  fetch("/analise", {
+  fetch("/estadonutricional/analise", {
     method: "POST",
     body: formData,
   })
@@ -113,7 +113,7 @@ function enviarArquivo() {
 }
 
 function uploadNovaTurma() {
-  fetch("/limparDadosUpload", {
+  fetch("/estadonutricional/limparDadosUpload", {
     method: "POST",
     headers: {
       "Content-type": "application/json",

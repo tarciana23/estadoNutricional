@@ -25,7 +25,7 @@ function coletandoDadosCadastrais() {
 function cadastrandoAlunos() {
   coletandoDadosCadastrais();
 
-  fetch("/cadastroTurmas", {
+  fetch("/estadonutricional/cadastroTurmas", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -107,7 +107,7 @@ function excluirLinha(index) {
   tabelaCorpo.deleteRow(index - 1);
 
   // Chama a rota do backend para excluir o aluno no lado do servidor
-  fetch(`/excluirAluno/${index}`, {
+  fetch(`/estadonutricional/excluirAluno/${index}`, {
     method: "DELETE",
   })
     .then((response) => response.json())
@@ -116,7 +116,7 @@ function excluirLinha(index) {
 }
 
 function limparDados() {
-  fetch("/limparDadosCadastro", {
+  fetch("/estadonutricional/limparDadosCadastro", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
