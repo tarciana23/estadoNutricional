@@ -7,10 +7,16 @@ from flask import Flask, send_file
 from openpyxl import Workbook
 from openpyxl.styles import Protection
 from io import BytesIO
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
+from werkzeug.wrappers import Response
 
 
 app = Flask(__name__)
 
+app.wsgi_app  = DispatcherMiddleware(
+    Response('Not Found', status=404),
+    {'/estadonutricional':app.wsgi_app}
+)
 wgsData = pd.read_excel('wgsData.xlsx')
 sexo_convertido = None
 
