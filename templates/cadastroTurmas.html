@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='cadastroTurmas.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Cadastro de turmas</title>
+  </head>
+
+  <body>
+    <main>
+      <header>
+        <div class="titulo">
+          <h1>Estado Nutricional</h1>
+          <img
+            src="{{url_for('static', filename='img/4.png')}}"
+            class="enfeite3"
+          />
+        </div>
+        <img
+          src="{{url_for('static', filename='img/1.png')}}"
+          class="enfeite1"
+        />
+        <a href="/templates/cadastroTurmas.html" class="redirecionarFerramentaPlanilhas">Ferramentas de manipulação de planilhas</a>
+      </header>
+
+      <section class="criacao_formulario">
+        <form
+          onsubmit="event.preventDefault();cadastrandoAlunos()"
+          method="post"
+        >
+          <div class="conjuntos">
+            <div class="input-grupo">
+              <label for="nomeInstituicao">Nome da instituição:</label>
+              <input type="text" id="nomeInstituicao" name="nomeInstituicao" />
+            </div>
+            <div class="input-grupo">
+              <label for="nomeTurma">Nome da turma:</label>
+              <input type="text" id="nomeTurma" name="nomeTurma" required />
+            </div>
+          </div>
+          <div class="conjuntos">
+            <div class="input-grupo">
+              <label for="nomeCrianca"> Nome do aluno</label>
+              <input type="text" id="nomeCrianca" name="nomeCrianca" required />
+            </div>
+            <div class="input-grupo">
+              <label for="dataNascimento">Data de nascimento:</label>
+              <input
+                id="dataNascimento"
+                type="date"
+                name="dataNascimento"
+                required
+              />
+            </div>
+          </div>
+          <div class="conjuntos">
+            <div class="input-grupo">
+              <label for="dataAcompanhamento">Data de acompanhamento:</label>
+              <input
+                id="dataAcompanhamento"
+                type="date"
+                name="dataAcompanhamento"
+              />
+            </div>
+            <div class="input-grupo">
+              <label for="sexo">Selecione o sexo: </label>
+              <select id="sexo" required>
+                <option value="default" selected></option>
+                <option value="F">Feminino</option>
+                <option value="M">Masculino</option>
+              </select>
+            </div>
+          </div>
+          <div class="conjuntos">
+            <div class="input-grupo">
+              <label for="peso">Peso(kg): </label>
+              <input type="number" id="peso" name="peso" step="0.01" />
+            </div>
+            <div class="input-grupo">
+              <label for="altura">Altura(cm): </label>
+              <input type="number" id="altura" name="altura" step="0.01" />
+            </div>
+          </div>
+          <div class="input-grupo-botoes">
+            <input type="submit" value="Cadastrar" id="submit" />
+            <!--<button id="submit" onclick = "location.reload()">Cadastrar nova turma</button>-->
+          </div>
+        </form>
+      </section>
+
+      <section class="lista_alunos_cadastrados" style="display: none">
+        <table id="tabela">
+          <thead>
+            <tr>
+              <td>Nome da Instituição</td>
+              <td>Turma</td>
+              <td>Nome cidadão</td>
+              <td>Data de nascimento</td>
+              <td>data do acompanhamento</td>
+              <td>Sexo</td>
+              <td>Peso</td>
+              <td>Altura</td>
+              <td>Idade em meses</td>
+              <td>WAZ</td>
+              <td>Peso/Idade</td>
+              <td>HAZ</td>
+              <td>Altura/Idade</td>
+              <td>WHZ</td>
+              <td class="borda">IMC/Idade</td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for aluno in alunos%}
+            <tr>
+              <td>{{aluno['Instituição']}}</td>
+              <td>{{aluno['Turma']}}</td>
+              <td>{{aluno['Nome Aluno']}}</td>
+              <td>{{aluno['Data de Nascimento']}}</td>
+              <td>{{aluno['Data de Acompanhamento']}}</td>
+              <td>{{aluno['Sexo']}}</td>
+              <td>{{aluno['Peso']}}</td>
+              <td>{{aluno['Altura']}}</td>
+              <td>{{aluno['Idade em Meses']}}</td>
+              <td>{{aluno['WAZ']}}</td>
+              <td>{{aluno['Peso/Idade']}}</td>
+              <td>{{aluno['HAZ']}}</td>
+              <td>{{aluno['Altura/Idade']}}</td>
+              <td>{{aluno['WHZ']}}</td>
+              <td>{{aluno['IMC/Idade']}}</td>
+              <td class="excluir_col">
+                Exluir
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+      <section class="salvar_excel">
+        <form action="/salvar_planilha_cadastro" id="form_salvarPlanilha">
+          <input
+            type="submit"
+            value="Salvar Planilha"
+            class="salvar_planilha"
+            style="display: none"
+          />
+          <img src="{{url_for('static', filename='img/download.png')}}" class="downloadPlanilha" style="display:none"/>
+        </form>
+        <button id="limparDados" onclick="limparDados()" style="display: none">
+          Cadastrar Nova Turma!
+        </button>
+      </section>
+
+      <footer>
+        <p>&copy.Todos os direitos reservados.</p>
+      </footer>
+    </main>
+    <script src="{{ url_for('static', filename='scriptCadastro.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,185 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --cor-principal-fundo: #EEFAF5;
+
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+
+}
+
+main {
+  position: relative;
+  min-height: 100vh;
+  background: rgba(123, 198, 168, 0.3)
+}
+
+header {
+  position: relative;
+}
+
+.enfeite3 {
+  position: absolute;
+  left: 60px;
+  top: 50px;
+  width: 3%;
+}
+
+header h1 {
+  padding: 2rem;
+  font-size: 3rem;
+  color: black;
+}
+
+.titulo {
+  width: 15%;
+  margin-left: 5rem;
+}
+
+.primeira-tela {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 81vh;
+}
+
+.imagem-frutas {
+  width: 20%;
+}
+
+.apresentacao {
+  text-align: center;
+}
+
+.apresentacao h1 {
+  font-size: 1.5rem;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 1rem;
+  /* color: white;*/
+}
+
+.formulario-form {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.botaoCadastroTurmas {
+  width: 50%;
+  text-align: center;
+  height: 4rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  background: #7BC6A8;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+/* Estilo quando o botão é clicado */
+.formulario-form button:active {
+  background-color: #628879;
+}
+
+/*
+.formulario-form label {
+  padding-bottom: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 5%;
+  font-weight: 400;
+
+}
+
+#uploadLabel {
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fa-solid {
+  font-weight: 900;
+  transform: scale(1.5);
+  margin-bottom: 6%;
+  color:black;
+}
+
+#nomeAquivo {
+  width: 50%;
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+#file {
+  display: none;
+  /* Oculta o input de arquivo */
+
+
+#uploadImage {
+  text-align: center;
+  transform: scale(3);
+}
+
+.submit {
+  width: 50%;
+  text-transform: uppercase;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  background-color: #7BC6A8;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.submit:hover {
+  text-decoration: none;
+
+}
+
+.enfeite1 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.enfeite2 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: #4b6660;
+}
+
+footer p {
+  font-size: 18px;
+}

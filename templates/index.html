@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <Link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Estado nutricional</title>
+</head>
+
+<body>
+    <main>
+        <header>
+            <div class="titulo">
+                <h1>Estado Nutricional</h1>
+                <img src="{{url_for('static', filename='img/4.png')}}" class="enfeite3">
+            </div>
+            <img src="{{url_for('static', filename='img/1.png')}}" class="enfeite1">
+        </header>
+        <section class="primeira-tela">
+
+            <img src="{{url_for('static', filename='img/2.png')}}" class="imagem-frutas">
+            <div class="formulario-form">
+                <a href="/cadastroTurmas" class="botaoCadastroTurmas">Cadastre uma nova turma!</a>
+                ou
+                <a href="/uploadTurmas" class="botaoCadastroTurmas">Faça upload dos arquivos da sua turma!</a>
+            </div>
+
+            <img src="{{url_for('static', filename='img/3.png')}}" class="enfeite2">
+        </section>
+        <footer>
+            <p>&copy.Todos os direitos reservados.</p>
+        </footer>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

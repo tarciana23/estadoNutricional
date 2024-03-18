@@ -1,0 +1,301 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --cor-principal-fundo: #eefaf5;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+main {
+  position: relative;
+  min-height: 100vh;
+  background: rgba(123, 198, 168, 0.3);
+}
+
+header {
+  position: relative;
+}
+
+header h1 {
+  padding: 2rem;
+  font-size: 3rem;
+  color: black;
+}
+
+.titulo {
+  width: 15%;
+  margin-left: 5rem;
+}
+
+.enfeite1 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+.redirecionarFerramentaPlanilhas{
+  position: absolute;
+  right: 155px;
+  top: 68px;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 1rem;
+}
+.enfeite3 {
+  position: absolute;
+  left: 60px;
+  top: 50px;
+  width: 3%;
+}
+.criacao_formulario {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/*cadastro turmas*/
+.criacao_formulario form {
+  width: 80%;
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.conjuntos {
+  display: flex;
+  gap: 2rem;
+}
+
+.input-grupo {
+  flex: 1;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-grupo label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.input-grupo input,
+.input-grupo select {
+  margin-top: 0.5rem;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 1rem;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.09);
+}
+
+.input-grupo-botoes {
+  display: flex;
+  margin-top: 1rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+#submit {
+  padding: 0.5rem 1.9rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: white;
+  background: #628879;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+}
+
+#submit:hover {
+  background-color: #a3c8b9;
+  color: black;
+}
+.lista_alunos_cadastrados {
+  /* padding: 1rem 8rem; */
+  height: 25vh;
+  overflow: scroll;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+
+.lista_alunos_cadastrados::-webkit-scrollbar {
+    width: 5px;
+    /* Largura da barra de rolagem */
+    height: 30%;
+  }
+  
+.lista_alunos_cadastrados::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: var(--brancoletras);
+    /* Cor do fundo da barra de rolagem */
+  }
+  
+  .lista_alunos_cadastrados::-webkit-scrollbar-thumb {
+    background-color: var(--verdeFundo);
+    /* Cor da alça da barra de rolagem */
+    border-radius: 5px;
+  }
+  
+  .lista_alunos_cadastrados::-webkit-scrollbar-thumb:hover {
+    background-color: var(--verdeFundo);
+    /* Cor da alça da barra de rolagem ao passar o mouse */
+  }
+
+.button_cadastro {
+  width: 20%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: white;
+  background: #628879;
+  font-size: 0.9rem;
+  letter-spacing: 0.1rem;
+}
+
+table {
+  width: 80%;
+  border-collapse: collapse;
+  font-weight: 400;
+  border-radius: 10px;
+    overflow: hidden;
+}
+
+table thead {
+  text-transform: capitalize;
+  background-color: #628879;
+  color: white;
+  font-size: 0.8rem;
+  border-radius: 12px 12px 0 0;
+}
+table tbody {
+  font-size: 0.9rem;
+  border-radius: 0 0 12px 12px;
+}
+
+table tbody tr:nth-last-child() {
+  border-bottom-right-radius: 1.2rem;
+}
+
+th,
+td {
+  padding: 0.6rem 0.6rem;
+  text-align: center;
+}
+
+table tbody tr:nth-child(odd) {
+  background: #f7f0f5;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: white;
+}
+th.borda, td.borda {
+  border-radius: 0 10px 10px 0; /* Adiciona borda arredondada apenas à direita */
+  background-color: transparent; /* Remove a cor de fundo */
+}
+
+.excluir_col {
+  background-color: #d7eee5;
+}
+
+#botaoExcluir{
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: #628879;
+  background-color: white;
+  /* font-weight: bold; */
+  border: none;
+}
+#botaoExcluir:hover{
+  background-color: black;
+  color: white;
+}
+
+#form_salvarPlanilha{
+  display: flex;
+}
+.salvar_excel {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  justify-content: center;
+  gap: 2rem;
+  padding-bottom: 3rem;
+}
+
+#form_salvarPlanilha {
+  display: flex;
+  width: 10%;
+}
+#form_salvarPlanilha{
+  width: 15%;
+}
+.salvar_planilha {
+  padding: 0.5rem 1.9rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: white;
+  background: #628879;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+}
+
+.salvar_planilha:hover {
+  background-color: #a3c8b9;
+  color: black;
+}
+.downloadPlanilha{
+  width: 10%;
+}
+#limparDados {
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: #628879;
+  background: white;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+}
+
+#limparDados:hover {
+  background-color: black;
+  color: #628879;
+}
+#redirecionarFerramenta{
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: #628879;
+  background: white;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: #4b6660;
+}
+
+footer p {
+  font-size: 18px;
+}

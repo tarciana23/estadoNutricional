@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='uploadTurmas.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Upload Turmas</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="titulo">
+          <h1>Estado Nutricional</h1>
+          <img
+            src="{{url_for('static', filename='img/4.png')}}"
+            class="enfeite3"
+          />
+        </div>
+        <img
+          src="{{url_for('static', filename='img/1.png')}}"
+          class="enfeite1"
+        />
+        <a href="/templates/cadastroTurmas.html" class="redirecionarFerramentaPlanilhas">Ferramentas de manipulação de planilhas</a>
+      </header>
+
+      <section class="downloadEupload">
+        <div class="entradaDeDados">
+          <div class="download">
+            <p>Baixe o modelo excel e preencha os dados:</p>
+            <i class="fa-solid fa-download" id="downloadButton"></i>
+          </div>
+          <div class="upload">
+            <form onsubmit="event.preventDefault(), enviarArquivo()">
+              <label for="file">Faça upload do arquivo excel:</label>
+              <label id="uploadLabel" for="file">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <div id="nomeAquivo">
+                  <!--Aqui será exibido o nome do arquivo -->
+                </div>
+              </label>
+              <input
+                type="file"
+                id="file"
+                accept=".xlsx"
+                oninput="VerificarArquivoUsuario();updateLabel();"
+              />
+              <input
+                type="submit"
+                id="submit"
+                value="Enviar"
+                class="submit"
+                style="display: none"
+              />
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="resultadoDataframe" style="display: none">
+        <table id="tabela">
+          <thead>
+            <tr>
+              <td>Nome da Instituição</td>
+              <td>Turma</td>
+              <td>Nome cidadão</td>
+              <td>Data de nacimento</td>
+              <td>data do acompanhamento</td>
+              <td>Sexo</td>
+              <td>Peso</td>
+              <td>Altura</td>
+              <td>Idade em meses</td>
+              <td>WAZ</td>
+              <td>Peso/Idade</td>
+              <td>HAZ</td>
+              <td>Altura/Idade</td>
+              <td>WHZ</td>
+              <td class="borda">IMC/Idade</td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for aluno in alunos%}
+            <tr>
+              <td>{{aluno['Instituição']}}</td>
+              <td>{{aluno['Turma']}}</td>
+              <td>{{aluno['Nome Aluno']}}</td>
+              <td>{{aluno['Data de Nascimento']}}</td>
+              <td>{{aluno['Data de Acompanhamento']}}</td>
+              <td>{{aluno['Sexo']}}</td>
+              <td>{{aluno['Peso']}}</td>
+              <td>{{aluno['Altura']}}</td>
+              <td>{{aluno['Idade em Meses']}}</td>
+              <td>{{aluno['WAZ']}}</td>
+              <td>{{aluno['Peso/Idade']}}</td>
+              <td>{{aluno['HAZ']}}</td>
+              <td>{{aluno['Altura/Idade']}}</td>
+              <td>{{aluno['WHZ']}}</td>
+              <td>{{aluno['IMC/Idade']}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+      <section class="alunosProblema">
+          <h2 id="motivo"></h2>
+      </section>
+      <section class="salvar_excel" style="display: none">
+        <form action="/salvar_planilha_upload" id="form_salvarPlanilha">
+          <input
+            type="submit"
+            value="Salvar Planilha"
+            class="salvar_planilha"
+          />
+        </form>
+        <button id="uploadNovaTurma" onclick="uploadNovaTurma()">
+          Fazer upload de uma nova Turma!
+        </button>
+      </section>
+      <footer>
+        <p>&copy.Todos os direitos reservados.</p>
+      </footer>
+    </main>
+    <script src="{{ url_for('static', filename='scriptUpload.js') }}"></script>
+  </body>
+</html>
