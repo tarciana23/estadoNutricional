@@ -17,7 +17,47 @@ main {
   min-height: 100vh;
   background: rgba(123, 198, 168, 0.3);
 }
+.error-message h3 {
+  text-align: center;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  width: 550px;
+  transform: translate(-50%, -50%);
+  background-color: #a3c8b9;
+  color: black;
+  padding: 15px 15px;
+  border: 2px solid #4b6660;
+  border-radius: 5px;
+}
+.error-message p{
+  position: fixed;
+  top: 110px;
+  left: 50%;
+  width: 550px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  color: black;
+  padding: 15px 15px;
+  border: 2px solid #4b6660;
+  border-radius: 5px;
+}
 
+.error-message button{
+  cursor: pointer;
+  position: fixed;
+  top: 135px;
+  left: 66%;
+  padding: 0.3rem;
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
+  background-color: #a3c8b9;
+  color: black;
+  border: none;
+}
+.error-message button:hover{
+  background-color: #a3c8b9;
+}
 header {
   position: relative;
 }

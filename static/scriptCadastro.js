@@ -86,18 +86,27 @@ function cadastrandoAlunos() {
           tabelaCorpo.appendChild(tr);
         });
       } catch (error) {
-        // Em caso de erro, exibe um alerta com a mensagem de erro
-        alert(
-          "Ocorreu um erro ao processar os dados: " +
-            "Desculpe, não foi possível calcular os índices WAZ, HAZ e WHZ do(s) aluno(s) abaixo, devido a discrepâncias nos dados de altura ou peso que não atendem aos padrões estabelecidos pela Organização Mundial da Saúde (OMS)"
-        );
       }
     })
     .catch((error) => {
-      // Em caso de erro de requisição, exibe um alerta com a mensagem de erro
-      alert(
-        "Desculpe, não foi possível calcular os índices WAZ, HAZ e WHZ deste aluno, devido a discrepâncias nos dados de altura ou peso que não atendem aos padrões estabelecidos pela Organização Mundial da Saúde (OMS)"
-      );
+       // Exibe alerta informando ao usuário sobre o erro
+       const errorMessageContainer = document.createElement('div');
+       errorMessageContainer.classList.add('error-message');
+       errorMessageContainer.innerHTML = `<h3>Alerta</h3>
+       <p> A idade do indivíduo deve estar entre 0 e 19 anos, de acordo com a data de nascimento até a data de acompanhamento, conforme os padrões estabelecidos pela Organização Mundial da Saúde (OMS).</p>
+       <button class="close-button">OK</button>`;
+       document.body.appendChild(errorMessageContainer);
+       
+       const closeButton = errorMessageContainer.querySelector('.close-button');
+       closeButton.addEventListener('click',fecharAlert);
+       function fecharAlert(){
+         // Remove o elemento da página
+         const errorMessageContainer = document.querySelector('.error-message');
+         if (errorMessageContainer) {
+         errorMessageContainer.remove();
+       }
+      }
+       return;
     });
 }
 

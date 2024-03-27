@@ -9,6 +9,8 @@ from openpyxl.styles import Protection
 from io import BytesIO
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from werkzeug.wrappers import Response
+from flask import flash
+
 
 
 app = Flask(__name__)
@@ -17,8 +19,10 @@ app.wsgi_app  = DispatcherMiddleware(
     Response('Not Found', status=404),
     {'/estadonutricional':app.wsgi_app}
 )
+
 wgsData = pd.read_excel('wgsData.xlsx')
 sexo_convertido = None
+motivo = None
 
 # Lista temporária de alunos
 alunos_cadastro = []
@@ -175,6 +179,7 @@ def analisar_excel():
 def cadastrar_aluno():
 
     global alunos_cadastro
+    global motivo
 
     alunos_sem_calculo_cadastro = []
     mensagem = ''
@@ -291,7 +296,6 @@ def cadastrar_aluno():
 
                         })
     
-    motivo = 'oi'
     resultado_cadastro = {'alunos': alunos_cadastro, 'motivo': motivo}
     if alunos_sem_calculo_cadastro:
         motivo = 'Desculpe, não foi possível calcular os índices WAZ, HAZ e WHZ do(s) aluno(s) abaixo, devido a discrepâncias nos dados de altura ou peso que não atendem aos padrões estabelecidos pela Organização Mundial da Saúde (OMS) :''\n'
@@ -408,6 +412,7 @@ def salvar_planilha_cadastro():
 @app.route('/salvar_planilha_upload')
 def salvar_planilha_upload():
     global alunos_upload
+    print(alunos_upload)
     arquivo_nome = (alunos_upload[0]['Turma'])
     # Cria um DataFrame pandas com os alunos
     df_upload = pd.DataFrame(alunos_upload)

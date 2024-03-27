@@ -34,28 +34,41 @@ document
     window.location.href = "/estadonutricional/download_excel";
   });
 
-function enviarArquivo() {
-  let formData = new FormData();
-  let fileInput = document.getElementById("file");
-  formData.append("file", fileInput.files[0]);
-
-  fetch("/estadonutricional/analise", {
-    method: "POST",
-    body: formData,
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data)
-      // Verifica se a resposta contém a mensagem de erro do backend
-      if (
-        data === "Por favor, faça o upload de uma planilha no formato correto."
-      ) {
-        // Exibe alerta informando ao usuário sobre o erro
-        alert("Por favor, faça o upload de uma planilha no formato correto.");
-        return;
+  function enviarArquivo() {
+    let formData = new FormData();
+    let fileInput = document.getElementById("file");
+    formData.append("file", fileInput.files[0]);
+  
+    fetch("/estadonutricional/analise", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        // Verifica se a resposta contém a mensagem de erro do backend
+        if (data === "Por favor, faça o upload de uma planilha no formato correto.") {
+            // Exibe alerta informando ao usuário sobre o erro
+            const errorMessageContainer = document.createElement('div');
+            errorMessageContainer.classList.add('error-message');
+            errorMessageContainer.innerHTML = `<h3>Alerta</h3>
+            <p> A planilha que foi enviada não está no formato esperado.<br>
+            Por favor,clique em "ok" e faça o upload de uma planilha no formato correto.</p>
+            <button class="close-button">OK</button>`;
+            document.body.appendChild(errorMessageContainer);
+            
+            const closeButton = errorMessageContainer.querySelector('.close-button');
+            closeButton.addEventListener('click',fecharAlert);
+            function fecharAlert(){
+              // Remove o elemento da página
+              const errorMessageContainer = document.querySelector('.error-message');
+              if (errorMessageContainer) {
+              errorMessageContainer.remove();
+            }
+            return;
+        }
       }
-
-      const alunosProblema = document.querySelector(".alunosProblema");
+        const alunosProblema = document.querySelector(".alunosProblema");
       alunosProblema.style.display = "flex";
 
       mensagem = document.getElementById('motivo');
